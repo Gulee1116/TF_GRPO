@@ -235,8 +235,9 @@ async def main(args):
     print(f"Duplicated to {len(formatted_test_data)} records for Pass@{args.pass_k} evaluation")
 
     # Load existing rollouts
-    os.makedirs(f"data/{args.domain}/eval", exist_ok=True)
-    rollout_filename = f"data/{args.domain}/eval/{args.experiment_name}.jsonl"
+    data_dir = os.path.join("/data/wangziyue-20251013/training-free-grpo-data-dir",f"data/{args.domain}/eval")
+    os.makedirs(data_dir, exist_ok=True)
+    rollout_filename = os.path.join(data_dir, f"{args.experiment_name}.jsonl")
     rollouts = load_rollouts(rollout_filename)
 
     # Rollout the dataset
