@@ -245,6 +245,8 @@ async def main(args):
         worker_agent=worker_agent,
         data=formatted_test_data,
         rollouts=rollouts,
+        # data=formatted_test_data[:1],
+        # rollouts=rollouts[:1],
         verify_func=verify_func,
         rollout_filename=rollout_filename,
         rollout_concurrency=args.rollout_concurrency,
