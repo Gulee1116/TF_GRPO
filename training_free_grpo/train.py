@@ -30,7 +30,8 @@ async def main(args):
         raise ValueError(f"Unsupported domain: {args.domain}")
     
     # Create experiment directory
-    experiment_dir = os.path.join("data", args.domain, "train", args.experiment_name)
+    # experiment_dir = os.path.join("data", args.domain, "train", args.experiment_name)
+    experiment_dir = os.path.join("/data/wangziyue-20251013/training-free-grpo-data-dir","data", args.domain, "train", args.experiment_name)
     os.makedirs(experiment_dir, exist_ok=True)
 
     # Set up the agent
@@ -105,7 +106,7 @@ async def main(args):
             
             # Retrieve experiences for this batch (except first step)
             if step > 0:
-                experience_filename = os.path.join("data", args.domain, "train", args.experiment_name, f"step_{step}/experiences.json")
+                experience_filename = os.path.join("/data/wangziyue-20251013/training-free-grpo-data-dir","data", args.domain, "train", args.experiment_name, f"step_{step}/experiences.json")
                 experiences = json.load(open(experience_filename))
             else:
                 experiences = {}
