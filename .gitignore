@@ -69,3 +69,5 @@ _*
 # temp config
 test.yaml
 pgs
+# log files
+training_free_grpo/eval_results/*
