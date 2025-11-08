@@ -3,7 +3,7 @@ export PYTHONPATH=$PWD:$PYTHONPATH
 python3 training_free_grpo/train.py \
     --mode agent \
     --domain math \
-    --experiment_name DAPO100 \
+    --experiment_name DAPO100_20251107 \
     --dataset DAPO-Math-17k \
     --dataset_truncate 100 \
     --epochs 3 \

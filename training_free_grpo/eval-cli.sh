@@ -8,7 +8,8 @@ PASS_K_VALUE=""
 ROLLOUT_CONCURRENCY=128
 EXPERIENCE_EXIST=""
 
-EXP_FILE_PATH=/data/wangziyue-20251013/training-free-grpo-data-dir/data/math/train/DAPO100/step_3/experiences.json
+# EXP_FILE_PATH=/data/wangziyue-20251013/training-free-grpo-data-dir/data/math/train/DAPO100/step_3/experiences.json
+EXP_FILE_PATH=/data/wangziyue-20251013/training-free-grpo-data-dir/data/math/train/DAPO100_20251107/step_3/experiences.json
 TIMESTAMP=$(date +%Y%m%d_%H%M%S)
 
 usage() {
@@ -92,14 +93,14 @@ echo ""
 # =========================
 # 结果保存
 # =========================
-mkdir -p training_free_grpo/eval_results/Qwen3-32B/pass${PASS_K_VALUE}
+mkdir -p training_free_grpo/eval_results/Qwen3-32B/EXP1108/pass${PASS_K_VALUE}
 
 # 保存全部日志
-LOG_PATH="training_free_grpo/eval_results/Qwen3-32B/pass${PASS_K_VALUE}/${EXPERIMENT_NAME}.log"
+LOG_PATH="training_free_grpo/eval_results/Qwen3-32B/EXP1108/pass${PASS_K_VALUE}/${EXPERIMENT_NAME}.log"
 echo "$RESULTS" > "$LOG_PATH"
 
 # 抽取关键统计行
-echo "$RESULTS" | grep -E "^- " | tail -n 3 > "training_free_grpo/eval_results/Qwen3-32B/pass${PASS_K_VALUE}/${EXPERIMENT_NAME}.txt"
+echo "$RESULTS" | grep -E "^- " | tail -n 3 > "training_free_grpo/eval_results/Qwen3-32B/EXP1108/pass${PASS_K_VALUE}/${EXPERIMENT_NAME}.txt"
 
-echo "📄 结果摘要文件: training_free_grpo/eval_results/Qwen3-32B/pass${PASS_K_VALUE}/${EXPERIMENT_NAME}.txt"
+echo "📄 结果摘要文件: training_free_grpo/eval_results/Qwen3-32B/EXP1108/pass${PASS_K_VALUE}/${EXPERIMENT_NAME}.txt"
 echo "🪵 完整日志文件: $LOG_PATH"
