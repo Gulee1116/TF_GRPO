@@ -180,4 +180,20 @@ if __name__ == "__main__":
     parser.add_argument("--task_timeout", type=float, default=3600, help="Timeout for each individual task in seconds")
 
     args = parser.parse_args()
+    # args = argparse.Namespace(
+    #     mode="agent",                       # --mode
+    #     domain="math",                      # --domain
+    #     experiment_name="DAPO100_20251109_test2",  # --experiment_name
+    #     dataset="DAPO-Math-17k",            # --dataset
+    #     dataset_truncate=5,               # --dataset_truncate
+    #     given_ground_truth="True",          # --given_ground_truth
+    #     epochs=3,                           # --epochs
+    #     batchsize=5,                      # --batchsize
+    #     grpo_n=5,                           # --grpo_n
+    #     rollout_concurrency=128,            # --rollout_concurrency
+    #     rollout_temperature=0.7,            # --rollout_temperature
+    #     rollout_max_tokens=16384,           # --rollout_max_tokens
+    #     task_timeout=1800,                  # --task_timeout
+    # )
+
     asyncio.run(main(args))
