@@ -7,6 +7,7 @@ DATASET_NAME=""
 PASS_K_VALUE=""
 ROLLOUT_CONCURRENCY=128
 EXPERIENCE_EXIST=""
+EXP_INDEX=EXP1109
 
 # EXP_FILE_PATH=/data/wangziyue-20251013/training-free-grpo-data-dir/data/math/train/DAPO100/step_3/experiences.json
 EXP_FILE_PATH=/data/wangziyue-20251013/training-free-grpo-data-dir/data/math/train/DAPO100_20251107/step_3/experiences.json
@@ -82,10 +83,10 @@ echo "🚀 运行命令如下："
 echo "$CMD"
 echo "---------------------------------------"
 
-# 执行命令并保留所有输出
-RESULTS=$(eval "$CMD 2>/dev/null")
+# 执行命令并捕获 stdout/stderr（不丢弃 stderr）
+# 这样 RESULTS 中包含了所有输出，且 EXIT_CODE 保存实际退出码
+RESULTS=$(eval "$CMD" 2>&1)
 EXIT_CODE=$?
-
 echo "---------------------------------------"
 echo "✅ 命令执行完毕（退出码: $EXIT_CODE）"
 echo ""
@@ -93,14 +94,14 @@ echo ""
 # =========================
 # 结果保存
 # =========================
-mkdir -p training_free_grpo/eval_results/Qwen3-32B/EXP1108/pass${PASS_K_VALUE}
+mkdir -p training_free_grpo/eval_results/Qwen3-32B/${EXP_INDEX}/pass${PASS_K_VALUE}
 
 # 保存全部日志
-LOG_PATH="training_free_grpo/eval_results/Qwen3-32B/EXP1108/pass${PASS_K_VALUE}/${EXPERIMENT_NAME}.log"
+LOG_PATH="training_free_grpo/eval_results/Qwen3-32B/${EXP_INDEX}/pass${PASS_K_VALUE}/${EXPERIMENT_NAME}.log"
 echo "$RESULTS" > "$LOG_PATH"
 
 # 抽取关键统计行
-echo "$RESULTS" | grep -E "^- " | tail -n 3 > "training_free_grpo/eval_results/Qwen3-32B/EXP1108/pass${PASS_K_VALUE}/${EXPERIMENT_NAME}.txt"
+echo "$RESULTS" | grep -E "^- " | tail -n 3 > "training_free_grpo/eval_results/Qwen3-32B/${EXP_INDEX}/pass${PASS_K_VALUE}/${EXPERIMENT_NAME}.txt"
 
-echo "📄 结果摘要文件: training_free_grpo/eval_results/Qwen3-32B/EXP1108/pass${PASS_K_VALUE}/${EXPERIMENT_NAME}.txt"
+echo "📄 结果摘要文件: training_free_grpo/eval_results/Qwen3-32B/${EXP_INDEX}/pass${PASS_K_VALUE}/${EXPERIMENT_NAME}.txt"
 echo "🪵 完整日志文件: $LOG_PATH"
